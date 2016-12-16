@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 4.2.2
+Copyright(c) 2009-2016 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Role('Siesta.Util.Role.CanCalculatePageScroll', {
+    // also recognizes the &quot;global&quot; attribute
+    
+    methods : {
+        
+        getPageScrollX : function (win) {
+            win                 = win || this.global
+            var doc             = win.document
+            
+            return window.pageXOffset != null ? win.pageXOffset : doc.compatMode === &quot;CSS1Compat&quot; ? doc.documentElement.scrollLeft : doc.body ? doc.body.scrollLeft : 0
+        },
+        
+        
+        getPageScrollY : function (win) {
+            win                 = win || this.global
+            var doc             = win.document
+            
+            return window.pageYOffset != null ? win.pageYOffset : doc.compatMode === &quot;CSS1Compat&quot; ? doc.documentElement.scrollTop : doc.body ? doc.body.scrollTop : 0 
+        },
+        
+        
+        viewportXtoPageX : function (x, win) {
+            win                 = win || this.global
+            var docEl           = win.document.documentElement
+            
+            // seems the &quot;docEl.clientLeft&quot; thing is copied from jQuery, not sure what kind of
+            // edge case it is supposed to solve
+            return x + this.getPageScrollX(win) - docEl.clientLeft
+        },
+        
+        
+        viewportYtoPageY : function (y, win) {
+            win                 = win || this.global
+            var docEl           = win.document.documentElement
+            
+            // seems the &quot;docEl.clientLeft&quot; thing is copied from jQuery, not sure what kind of
+            // edge case it is supposed to solve
+            return y + this.getPageScrollY(win) - docEl.clientTop
+        },
+        
+        
+        pageXtoViewportX : function (x, win) {
+            win                 = win || this.global
+            var docEl           = win.document.documentElement
+            
+            // seems the &quot;docEl.clientLeft&quot; thing is copied from jQuery, not sure what kind of
+            // edge case it is supposed to solve
+            return x - this.getPageScrollX(win) + docEl.clientLeft
+        },
+        
+        
+        pageYtoViewportY : function (y, win) {
+            win                 = win || this.global
+            var docEl           = win.document.documentElement
+            
+            // seems the &quot;docEl.clientLeft&quot; thing is copied from jQuery, not sure what kind of
+            // edge case it is supposed to solve
+            return y - this.getPageScrollY(win) + docEl.clientTop
+        }
+    }
+})
+</pre>
+</body>
+</html>

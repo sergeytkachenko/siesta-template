@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+
+Siesta 4.2.2
+Copyright(c) 2009-2016 Bryntum AB
+http://bryntum.com/contact
+http://bryntum.com/products/siesta/license
+
+*/
+Role('Ariadne.DomQueryFinder.Role.DomHelper', {
+
+    does        : [
+        Siesta.Util.Role.CanGetType    
+    ],
+
+    methods : {
+        
+        ignoreCssClass : function (cls, dom) {
+            return false
+        },
+        
+        
+        getCssClasses : function (dom) {
+            // `className` will be a &quot;[object SVGAnimatedString]&quot; value for SVG elements
+            var classes             = this.typeOf(dom.className) == 'String' ? dom.className.trim() : ''
+            var significantClasses  = []
+            var index               = {}
+
+            classes                 = classes &amp;&amp; classes.split(/\s+/) || [];
+
+            for (var i = 0; i &lt; classes.length; i++) {
+                var cssClass            = classes[ i ]
+                
+                if (!index[ cssClass ]) {
+                    if (!this.ignoreCssClass(cssClass, dom)) significantClasses.push(cssClass)
+                    
+                    index[ cssClass ]   = true
+                }
+            }
+            
+            return significantClasses
+        },
+        
+        
+        escapeDomSelector : function (selector, asId) {
+            if (asId) return Sizzle.escape(selector)
+            
+            return Sizzle.escape(&quot;L&quot; + selector).substring(1).replace(/\\ /g, ' ')
+        },
+        
+        
+        unEscapeDomSelector : function (selector) {
+            return Sizzle.unescape(selector)
+        }
+    }
+});
+</pre>
+</body>
+</html>

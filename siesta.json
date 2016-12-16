@@ -1,0 +1,9 @@
+{
+    harness : {
+        //forceDOMVisible     : true
+    },
+    
+    cmd     : {
+        //rerun-failed    : true
+    }
+}

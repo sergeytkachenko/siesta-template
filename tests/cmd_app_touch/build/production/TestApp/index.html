@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html manifest="cache.appcache" lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>TestApp</title>
+    <style type="text/css">
+         /**
+         * Example of an initial loading indicator.
+         * It is recommended to keep this as minimal as possible to provide instant feedback
+         * while other resources are still being loaded for the first time
+         */
+        html, body {
+            height: 100%;
+            background-color: #1985D0
+        }
+
+        #appLoadingIndicator {
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            text-align: center;
+            width: 100%;
+            height: 30px;
+            -webkit-animation-name: appLoadingIndicator;
+            -webkit-animation-duration: 0.5s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-direction: linear;
+        }
+
+        #appLoadingIndicator > * {
+            background-color: #FFFFFF;
+            display: inline-block;
+            height: 30px;
+            -webkit-border-radius: 15px;
+            margin: 0 5px;
+            width: 30px;
+            opacity: 0.8;
+        }
+
+        @-webkit-keyframes appLoadingIndicator{
+            0% {
+                opacity: 0.8
+            }
+            50% {
+                opacity: 0
+            }
+            100% {
+                opacity: 0.8
+            }
+        }
+    </style>
+    <!-- The line below must be kept intact for Sencha Command to build your application -->
+    <script type="text/javascript">(function(m){function u(a){function b(d,a){var b=d.length,c,f;for(c=0;c<b;c++){f=d[c];var g=c,k;"string"==typeof f&&(f={path:f});f.shared?(f.version=f.shared,k=f.shared+f.path):(E.href=f.path,k=E.href);f.uri=k;f.key=e+"-"+k;h[k]=f;d[g]=f;f.type=a;f.index=c;f.collection=d;f.ready=!1;f.evaluated=!1}return d}var c;"string"==typeof a?(c=a,a=F(c)):c=JSON.stringify(a);var e=a.id,k=e+"-"+G+"app.json",h={};this.key=k;this.css=b(a.css,"css");this.js=b(a.js,"js");l.microloaded=!0;var g=window.Ext.filterPlatform=
+function(d){function a(d){var b=/Mobile(\/|\s)/.test(d);return/(iPhone|iPod)/.test(d)||!/(Silk)/.test(d)&&/(Android)/.test(d)&&(/(Android 2)/.test(d)||b)||/(BlackBerry|BB)/.test(d)&&b||/(Windows Phone)/.test(d)}function c(d){return!a(d)&&(/iPad/.test(d)||/Android|Silk/.test(d)||/(RIM Tablet OS)/.test(d)||/MSIE 10/.test(d)&&/; Touch/.test(d))}var b=!1,f=navigator.userAgent,e,k;d=[].concat(d);e=window.location.search.substr(1).split("\x26");k={};var g;for(g=0;g<e.length;g++){var h=e[g].split("\x3d");
+k[h[0]]=h[1]}if(e=k.platform)return-1!=d.indexOf(e);e=0;for(k=d.length;e<k;e++){switch(d[e]){case "phone":b=a(f);break;case "tablet":b=c(f);break;case "desktop":b=!a(f)&&!c(f);break;case "ios":b=/(iPad|iPhone|iPod)/.test(f);break;case "android":b=/(Android|Silk)/.test(f);break;case "blackberry":b=/(BlackBerry|BB)/.test(f);break;case "safari":b=/Safari/.test(f)&&!/(BlackBerry|BB)/.test(f);break;case "chrome":b=/Chrome/.test(f);break;case "ie10":b=/MSIE 10/.test(f);break;case "windows":b=/MSIE 10/.test(f)||
+/Trident/.test(f);break;case "tizen":b=/Tizen/.test(f);break;case "firefox":b=/Firefox/.test(f)}if(b)return!0}return!1};this.css=this.css.filter(function(d){var a=d.platform,b=d.exclude;d.type="css";if(a){if(g(a)&&!g(b))return l.theme||(l.theme={}),l.theme.name||(l.theme.name=d.theme||"Default"),!0;d.filtered=!0;return!1}return!0});this.js=this.js.filter(function(d){var a=d.platform,b=d.exclude;d.type="js";return!a||g(a)&&!g(b)?!0:(d.filtered=!0,!1)});this.assets=this.css.concat(this.js);this.getAsset=
+function(d){return h[d]};this.store=function(){y(k,c)}}function z(a,b){var c=document.createElement("meta");c.setAttribute("name",a);c.setAttribute("content",b);p.appendChild(c)}function t(a,b,c){var e=new XMLHttpRequest;c=c||H;a=a+(-1==a.indexOf("?")?"?":"\x26")+Date.now();try{e.open("GET",a,!0),e.onreadystatechange=function(){if(4==e.readyState){var a=e.status,g=e.responseText;200<=a&&300>a||304==a||0==a&&0<g.length?b(g):c()}},e.send(null)}catch(k){c()}}function N(a,b){var c=n.createElement("iframe");
+r.push({iframe:c,callback:b});c.src=a+".html";c.style.cssText="width:0;height:0;border:0;position:absolute;z-index:-999;visibility:hidden";n.body.appendChild(c)}function O(a,b,c){var e=document.createElement("script");e.src=a;e.type="text/javascript";e.charset="UTF-8";e.onerror=c;"addEventListener"in e?e.onload=b:"readyState"in e?e.onreadystatechange=function(){"loaded"!==this.readyState&&"complete"!==this.readyState||b()}:e.onload=b;p.appendChild(e)}function P(a){var b=document.createElement("link");
+b.rel="stylesheet";b.href=a;p.appendChild(b)}function I(a,b,c){var e=!!a.shared;if(a.remote)"js"===a.type?O(a.uri,function(){b("")},c):(P(a.uri),b(""));else{if(!e&&a.version&&a.version.length){var g=b,h=a.version,l=h.length,d,v;b=function(b){v=b.substring(0,1);"/"==v?b.substring(2,l+2)!==h&&(d=!0):"f"==v?b.substring(10,l+10)!==h&&(d=!0):"."==v&&b.substring(1,l+1)!==h&&(d=!0);!0===d?confirm("Requested: '"+a.uri+" seems to have been changed. Attempt to refresh the application?")&&Q():g(b)}}(e?N:t)(a.uri,
+b,c)}}function J(a){var b=a.data;a=a.source.window;var c,e,g,h;c=0;for(e=r.length;c<e;c++)if(g=r[c],h=g.iframe,h.contentWindow===a){g.callback(b);n.body.removeChild(h);r.splice(c,1);break}}function A(a){"undefined"!=typeof console&&(console.error||console.log).call(console,a)}function y(a,b){try{q.setItem(a,b)}catch(c){q&&c.code==c.QUOTA_EXCEEDED_ERR&&B&&A("LocalStorage Quota exceeded, cannot store "+a+" locally")}}function w(a){try{return q.getItem(a)}catch(b){return null}}function Q(){K||(K=!0,
+t("app.json",function(a){(new u(a)).store();m.location.reload()}))}function C(a){function b(d,a){var b=d.collection,e=d.index,f=b.length;d.ready=!0;d.content=a;for(a=e-1;0<=a;a--)if(d=b[a],!(d.filtered||d.ready&&d.evaluated))return;for(a=e;a<f;a++)if(d=b[a],d.ready)d.evaluated||c(d);else break}function c(a){a.evaluated=!0;if("js"==a.type)try{a.content=a.content+"\n//# sourceURL\x3d"+a.uri+"\n",eval.call(window,a.content)}catch(b){A("Error evaluating "+a.uri+" with message: "+b)}else{var c=n.createElement("style"),
+g;c.type="text/css";a.content=a.content+"\n/*# sourceURL\x3d"+a.uri+" */\n";c.textContent=a.content;"id"in a&&(c.id=a.id);"disabled"in a&&(c.disabled=a.disabled);g=document.createElement("base");g.href=a.path.replace(/\/[^\/]*$/,"/");p.appendChild(g);p.appendChild(c);p.removeChild(g)}delete a.content;0==--h&&e()}function e(){function b(){n&&c()}function c(){var a=l.onUpdated||H;if("onSetup"in l)l.onSetup(a);else a()}function e(){m.store();h.forEach(function(a){y(a.key,a.content)});c()}function k(a,
+b){a.content=b;0==--q&&(g.status==g.IDLE?e():p=e)}function f(){L("online",f,!1);t("app.json",function(c){B=m=new u(c);var e;m.assets.forEach(function(b){(e=a.getAsset(b.uri))&&b.version===e.version||h.push(b)});q=h.length;0==q?g.status==g.IDLE?b():p=b:h.forEach(function(b){function d(){I(b,function(a){k(b,a)})}var c=a.getAsset(b.uri),e=b.path,f=b.update;c&&f&&null!==w(b.key)&&"delta"==f?t("deltas/"+e+"/"+c.version+".json",function(a){try{var d;var c=w(b.key),e=F(a);a=[];var f,g,h;if(0===e.length)d=
+c;else{g=0;for(h=e.length;g<h;g++)f=e[g],"number"===typeof f?a.push(c.substring(f,f+e[++g])):a.push(f);d=a.join("")}k(b,d)}catch(l){A("Malformed delta content received for "+b.uri)}},d):d()})})}var h=[],n=!1,p=function(){},r=function(){g.swapCache();n=!0;p()},q;L("message",J,!1);if(g.status==g.UPDATEREADY)r();else if(g.status==g.CHECKING||g.status==g.DOWNLOADING)g.onupdateready=r,g.onnoupdate=g.onobsolete=function(){p()};!1!==navigator.onLine?f():D("online",f,!1)}var k=a.assets,h=k.length,m;B=a;D("message",
+J,!1);0==h?e():k.forEach(function(a){var c=w(a.key);null===c?I(a,function(c){a.remote||y(a.key,c);b(a,c)},function(){b(a,"")}):b(a,c)})}function M(a){if(navigator.userAgent.match(/IEMobile\/10\.0/)){var b=document.createElement("style");b.appendChild(document.createTextNode("@media screen and (orientation: portrait) {@-ms-viewport {width: 320px !important;}}@media screen and (orientation: landscape) {@-ms-viewport {width: 560px !important;}}"));document.getElementsByTagName("head")[0].appendChild(b)}b=
+/MSIE 10/.test(navigator.userAgent)?/complete|loaded/:/interactive|complete|loaded/;null!==n.readyState.match(b)?C(a):D("DOMContentLoaded",function(){navigator.standalone?setTimeout(function(){setTimeout(function(){C(a)},1)},1):setTimeout(function(){C(a)},1)},!1)}var H=function(){},r=[],n=m.document,p=n.head||n.getElementsByTagName("head")[0],D=m.addEventListener,L=m.removeEventListener,F=JSON.parse,E=n.createElement("a"),x=n.location,G=x.protocol+"//"+x.hostname+x.pathname+x.search,K=!1,B,g,q;try{q=
+m.localStorage,g=m.applicationCache}catch(a){}if("undefined"===typeof m.Ext)var l=m.Ext={};l.blink=function(a){var b=w(a.id+"-"+G+"app.json");z("viewport","width\x3ddevice-width, initial-scale\x3d1.0, maximum-scale\x3d1.0, minimum-scale\x3d1.0, user-scalable\x3dno");z("apple-mobile-web-app-capable","yes");z("apple-touch-fullscreen","yes");b?(a=new u(b),M(a)):t("app.json",function(b){a=new u(b);a.store();M(a)})}})(this);Ext.blink({id:"7660903c-2bd3-465a-bddd-df8477b0c8c5"});</script>
+</head>
+<body>
+    <div id="appLoadingIndicator">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
